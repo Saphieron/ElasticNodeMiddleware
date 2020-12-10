@@ -96,10 +96,8 @@ void control_handleChar(uint8_t currentData) {
                     break;
                 case 'F':
                     //This the crucial case, enabled so that any debugging application can support writing new or
-                    // different bitfiles to the flash
-                    // certain assumptions made about addresses aligning
-                    // addresses must be aligned to 4K blocks 0xFFF000
-                    // calculate what blocks need to be erased
+                    // different bitfiles to the flash certain assumptions made about addresses aligning
+                    // addresses must be aligned to 4K blocks 0xFFF000 calculate what blocks need to be erased
                     // acknowledge when ready to receive again
                     debugAck(currentData);
                     // For configure the FLASH chip
@@ -112,11 +110,9 @@ void control_handleChar(uint8_t currentData) {
                     userlogic_read_id();
                     break;
                 default:
-                    /* *
-                     * The bit flash script REQUIRES an echo default case where a set on numbers are echoed back
-                     * to perform a synchronisation. After this the MCU is considered ready to receive the commands
-                     * to write the bit file into the flash.
-                     * */
+//                    The bit flash script REQUIRES an echo default case where a set on numbers are echoed back
+//                    to perform a synchronisation. After this the MCU is considered ready to receive the commands
+//                    to write the bit file into the flash.
                     debugAck(currentData + 1);
                     break;
 //
@@ -143,10 +139,8 @@ void control_handleChar(uint8_t currentData) {
 //                    reconfigure_fpgaMultiboot(0x90001);
 //                    break;
 //                    // indicate readiness
-
             }
             break;
-
         case UART_FLASH:
             break;
     }
